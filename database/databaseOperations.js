@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-// Create a MySQL connection pool
+// Establish a pool of MySQL connections
 const pool = mysql.createPool({
     connectionLimit: 10,
     password: 'your_mysql_password',
@@ -13,7 +13,7 @@ const pool = mysql.createPool({
 
 let databaseOperations = {};
 
-// Function to register a new user
+// feature for adding new users
 databaseOperations.registerUser = (username, email, password) => {
     return new Promise((resolve, reject) => {
         pool.query("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", [username, email, password], (err, result) => {
@@ -25,7 +25,7 @@ databaseOperations.registerUser = (username, email, password) => {
     });
 };
 
-// Function to authenticate a user
+// Authentication function for users
 databaseOperations.authenticateUser = (email, password) => {
     return new Promise((resolve, reject) => {
         pool.query("SELECT * FROM users WHERE email = ? AND password = ?", [email, password], (err, result) => {
@@ -37,7 +37,7 @@ databaseOperations.authenticateUser = (email, password) => {
     });
 };
 
-// Function to add a new train
+// Ability to include a new train
 databaseOperations.addTrain = (source, destination, totalSeats) => {
     return new Promise((resolve, reject) => {
         pool.query("INSERT INTO trains (source, destination, total_seats) VALUES (?, ?, ?)", [source, destination, totalSeats], (err, result) => {
@@ -49,7 +49,7 @@ databaseOperations.addTrain = (source, destination, totalSeats) => {
     });
 };
 
-// Function to get trains between source and destination with seat availability
+// The ability to obtain trains with available seats between a source and a destination
 databaseOperations.getTrains = (source, destination) => {
     return new Promise((resolve, reject) => {
         pool.query("SELECT * FROM trains WHERE source = ? AND destination = ?", [source, destination], (err, result) => {
@@ -61,7 +61,7 @@ databaseOperations.getTrains = (source, destination) => {
     });
 };
 
-// Function to book a seat on a train
+// Ability to reserve a seat on a train
 databaseOperations.bookSeat = (trainId, userId) => {
     return new Promise((resolve, reject) => {
         pool.query("INSERT INTO bookings (train_id, user_id) VALUES (?, ?)", [trainId, userId], (err, result) => {
