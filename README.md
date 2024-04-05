@@ -6,18 +6,12 @@ The train management, user authentication, and reservation of seats are among th
 3. Configure your MySQL database details in the `databaseOperations.js` file.
 4. Start the server using `npm start`.
 # Project Structure
-railway-management-system/
-│
-├── database/
-│   └── databaseOperations.js   # Database operations for user authentication and train management
-│
-├── routes/
-│   ├── authenticationRouter.js # Routes for user authentication
-│   └── listRouter.js           # Routes for train management
-│
-├── app.js                      # Main application file
-├── README.md                   # Project documentation
-└── package.json                # Project dependencies and scripts
+databaseOperations.js      # Database operations for user authentication and train management
+authenticationRouter.js    # Routes for user authentication
+listRouter.js              # Routes for train management
+app.js                     # Main application file
+README.md                  # Project documentation
+package.json               # Project dependencies and scripts
 # Dependencies
 express: Web server framework for Node.js
 bcrypt: Library for password hashing and verification
